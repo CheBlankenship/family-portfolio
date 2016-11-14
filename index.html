@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Family</title>
+
+    <script src="../angular.js"></script>
+    <script src="../angular-ui-router.js"></script>
+
+    <script>
+    var app = angular.module('family', ['ui.router']);
+
+    app.config(function($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state({
+          name: 'home',
+          url: '/',
+          templateUrl: 'home.html'
+        })
+        .state({
+          name: 'father',
+          url: '/father',
+          templateUrl: 'father.html'
+        })
+        .state({
+          name: 'mother',
+          url: '/mother',
+          templateUrl: 'mother.html'
+        });
+
+        $urlRouterProvider.otherwise('/');
+    });
+
+    </script>
+    <style>
+    .active {
+      background-color: yellow;
+      color: black;
+    }
+    </style>
+  </head>
+
+  <body ng-app="family">
+    <nav>
+      <a ui-sref="home" ui-sref-active="active">Home</a>
+      <a ui-sref="father" ui-sref-active="active">Father</a>
+      <a ui-sref="mother" ui-sref-active="active">Mother</a>
+    </nav>
+    <ui-view></ui-view>
+  </body>
+
+</html>
